@@ -53,22 +53,19 @@ export default class Home extends React.Component {
                         <div className="col-lg-4">
                             <h5 className="mb-3"><i className="medium material-icons">arrow_forward</i> Add New Product</h5>
                             <div className="container add-new-product-section">
-                                <form id="add-product-form" action="/add-product" method="POST"
-                                    enctype="application/x-www-form-urlencoded">
-                                    <div className="form-group">
-                                        <label className="mt-2">Name</label>
-                                        <input type="text" value={name} onChange={({ target: { value: name } }) => this.setState({ data: { ...data, name } })} className="form-control" placeholder="Enter Name" />
-                                        <label className="mt-2">Description</label>
-                                        <input type="text" value={description} onChange={({ target: { value: description } }) => this.setState({ data: { ...data, description } })} className="form-control"
-                                            placeholder="Enter Description" />
-                                        <label className="mt-2">Price</label>
-                                        <input type="number" value={price} onChange={({ target: { value: price } }) => this.setState({ data: { ...data, price } })} className="form-control" placeholder="Enter Price" />
+                                <div className="form-group">
+                                    <label className="mt-2">Name</label>
+                                    <input type="text" value={name} onChange={({ target: { value: name } }) => this.setState({ data: { ...data, name } })} className="form-control" placeholder="Enter Name" />
+                                    <label className="mt-2">Description</label>
+                                    <input type="text" value={description} onChange={({ target: { value: description } }) => this.setState({ data: { ...data, description } })} className="form-control"
+                                        placeholder="Enter Description" />
+                                    <label className="mt-2">Price</label>
+                                    <input type="number" value={price} onChange={({ target: { value: price } }) => this.setState({ data: { ...data, price } })} className="form-control" placeholder="Enter Price" />
 
-                                    </div>
-                                    <div className="form-group">
-                                        <button type="submit" onClick={() => this.props.add({ name, price, description })} className="btn btn-success">Add Product</button>
-                                    </div>
-                                </form>
+                                </div>
+                                <div className="form-group">
+                                    <button onClick={() => this.props.add({ name, price, description })} className="btn btn-success">Add Product</button>
+                                </div>
                             </div>
                         </div>
                         <div className="col-lg-8">
@@ -136,7 +133,7 @@ export default class Home extends React.Component {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-danger waves-effect" data-dismiss="modal" onClick={() => this.setState({ edit: false, data: { name: "", price: "", description: "" } })}>Cancel</button>
-                            <button type="submit" onClick={() => this.props.onUpdate({ name, price, description }, _id)} className="btn btn-info waves-effect">Edit Product</button>
+                            <button onClick={() => { this.props.onUpdate({ name, price, description }, _id); this.setState({ edit: false }) }} className="btn btn-info waves-effect">Edit Product</button>
                         </div>
                     </div>
                 </Modal>
