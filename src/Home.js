@@ -4,7 +4,7 @@ export default class Home extends React.Component {
     state = { search: "", data: { name: "", price: "", description: "" } }
     search = (text, allData) => {
         let data = allData.filter(data => {
-            return Object.values(data).join("").toLowerCase().includes(text)
+            return Object.values(data).join("").toLowerCase().includes(text.toLowerCase())
         })
         return data
     }
