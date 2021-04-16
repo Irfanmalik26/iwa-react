@@ -60,7 +60,7 @@ export default class Home extends React.Component {
                                     <input type="text" value={description} onChange={({ target: { value: description } }) => this.setState({ data: { ...data, description } })} className="form-control"
                                         placeholder="Enter Description" />
                                     <label className="mt-2">Price</label>
-                                    <input type="number" value={price} onChange={({ target: { value: price } }) => this.setState({ data: { ...data, price: isNaN(parseInt(price)) ? 0 : price } })} className="form-control" placeholder="Enter Price" />
+                                    <input type="number" value={price} onChange={({ target: { value: price } }) => this.setState({ data: { ...data, price } })} className="form-control" placeholder="Enter Price" />
 
                                 </div>
                                 <div className="form-group">
