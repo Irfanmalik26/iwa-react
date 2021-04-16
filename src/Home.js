@@ -60,11 +60,11 @@ export default class Home extends React.Component {
                                     <input type="text" value={description} onChange={({ target: { value: description } }) => this.setState({ data: { ...data, description } })} className="form-control"
                                         placeholder="Enter Description" />
                                     <label className="mt-2">Price</label>
-                                    <input type="number" value={price} onChange={({ target: { value: price } }) => this.setState({ data: { ...data, price } })} className="form-control" placeholder="Enter Price" />
+                                    <input type="number" value={price} onChange={({ target: { value: price } }) => this.setState({ data: { ...data, price: isNaN(parseInt(price)) ? 0 : price } })} className="form-control" placeholder="Enter Price" />
 
                                 </div>
                                 <div className="form-group">
-                                    <button onClick={() => this.props.add({ name, price, description })} className="btn btn-success">Add Product</button>
+                                    <button type="submit" disabled={!name || !description || !price} onClick={() => { this.props.add({ name, price, description }); this.setState({ data: { name: "", price: "", description: "" } }) }} className="btn btn-success">Add Product</button>
                                 </div>
                             </div>
                         </div>
@@ -72,6 +72,7 @@ export default class Home extends React.Component {
                             <h5 className="mb-3"><i className="medium material-icons">arrow_forward</i>
                             All Products <span>
                                     <input
+                                        className="form-control"
                                         type="text"
                                         value={search}
                                         onChange={({ target: { value: search } }) => this.setState({ search })}
@@ -83,7 +84,7 @@ export default class Home extends React.Component {
                                 <Table>
                                     <thead>
                                         <tr>
-                                            {Object.keys({ ...allData[0], Edit: 0, Delete: 0 } || []).map(key => <th>{key}</th>)}
+                                            {["ID", "Name", "Description", "Price", "Edit", "Delete"].map(key => <th>{key}</th>)}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -96,8 +97,8 @@ export default class Home extends React.Component {
                                                         <td>{name}</td>
                                                         <td>{description}</td>
                                                         <td>{price}</td>
-                                                        <td onClick={() => this.setState({ data, edit: true })}><i className="medium material-icons">edit</i></td>
-                                                        <td onClick={() => this.props.delete(_id)}><i className="medium material-icons">delete</i></td>
+                                                        <td onClick={() => this.setState({ data, edit: true })}><i className="medium warning material-icons">edit</i></td>
+                                                        <td onClick={() => this.props.delete(_id)}><i className="medium red material-icons">delete</i></td>
                                                     </tr>
                                                 )
                                             })
@@ -133,7 +134,7 @@ export default class Home extends React.Component {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-danger waves-effect" data-dismiss="modal" onClick={() => this.setState({ edit: false, data: { name: "", price: "", description: "" } })}>Cancel</button>
-                            <button onClick={() => { this.props.onUpdate({ name, price, description }, _id); this.setState({ edit: false }) }} className="btn btn-info waves-effect">Edit Product</button>
+                            <button type="submit" onClick={() => { this.props.onUpdate({ name, price, description }, _id); this.setState({ edit: false }) }} className="btn btn-info waves-effect">Edit Product</button>
                         </div>
                     </div>
                 </Modal>
