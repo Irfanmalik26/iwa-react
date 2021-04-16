@@ -20,7 +20,8 @@ export default class App extends React.Component {
         this.setState({ user: null }, this.loading)
     }
     login = ({ user, password }) => {
-        if (user === "admin" && password === "123") {
+        let pass = process.env.REACT_APP_password ? process.env.REACT_APP_password : ""
+        if (user === "admin" && password === pass) {
             let user = "admin"
             this.setState({ user })
             localStorage.setItem("user", user)
