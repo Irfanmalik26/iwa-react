@@ -111,7 +111,7 @@ export default class Home extends React.Component {
                 </div>
 
                 <footer className="footer">
-                    <div className="container text-center"><span className="text-muted">Designed & Developed by <a href="https://github.com/Irfanmalik26" target="blank">Irfan Malik</a> &copy; 2021</span></div>
+                    <div className="container text-center"><span className="text-muted">Designed & Developed by <a href="https://github.com/Irfanmalik26" target="blank">Muhammad Irfan</a> &copy; 2021</span></div>
                 </footer>
                 <Modal isOpen={this.state.edit} onClosed={() => this.setState({ edit: false, data: { name: "", price: "", description: "" } })}>
                     <div className="modal-content">

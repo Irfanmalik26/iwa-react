@@ -8,7 +8,7 @@ export default class Login extends React.Component {
                     <div className="row">
                         <div className="container text-center">
                             <h2 className="mt-4">Welcome to Design Solvers</h2>
-                            <p>Premium quality Mobile Accessories by <a href="https://github.com/Irfanmalik26" target="blank">Irfan Malik</a></p>
+                            <p>Premium quality Mobile Accessories by <a href="https://github.com/Irfanmalik26" target="blank">Muhammad Irfan</a></p>
                         </div>
                     </div>
                 </div>
